@@ -1,7 +1,9 @@
 # 100DaysOfML
-#100DaysOfML
 
-So here we are!
+Inspired by the mighty Siraj - https://github.com/llSourcell/100_Days_of_ML_Code
+
+
+## So here we are!
 
 I'll be using Google COLAB for this and publishing here on GitHub.
 
