@@ -16,10 +16,31 @@ I'll be using Google COLAB for this and publishing here on GitHub.
 
 *[Queue]*
 
-**Day 4** - Logistic Regression 
+**Day 4** - Multivariate Linear Regression 
+
+**Day 5** - Logistic Regression 
+
+* Forwardprop
+* Backprop
+* Simple sin wave matching Neural Network
+* Sin wave Neural Network - Internal manifold analysis & Vis!
+
+**=> PyTorch from here in...! <=**
+* Binary classification - sample
+* Multi-classification - sample
+* MNist - 
+* Prediction - 
+* AutoEncoders - 
+* Transfer Learning - 
+* Neural Style - 
+
+
+
 
 
 _Links_
+https://ml-cheatsheet.readthedocs.io/en/latest/linear_regression.html#multivariable-regression
+
 https://towardsdatascience.com/simple-and-multiple-linear-regression-in-python-c928425168f9
 
 https://towardsdatascience.com/building-a-logistic-regression-in-python-step-by-step-becd4d56c9c8
