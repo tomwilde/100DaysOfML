@@ -9,8 +9,8 @@ I'll be using Google COLAB for this and publishing here on GitHub.
 
 **Day 1** - Linear Regression on a single variable using NumPy.
 
-**Day 2** - Learnt the difference betweet Multiple Linear Regression and Multivariate Linear Regression. 
-            Started coding up the latter.
+**Day 2** - (Re)learnt about Multiple Linear Regression and Multivariate Linear Regression. 
+            Started coding up the latter...
             
 *[Queue]*
 
