@@ -12,11 +12,10 @@ Day | Notes | Code
 **1** | Linear Regression on a single variable using NumPy. | [1_numpy_linearRegression.ipynb](1_numpy_linearRegression.ipynb)
 **2** | (Re)learnt about Multiple Linear Regression and Multivariate Linear Regression. Started coding up the latter and getting CoLAB to cooperate with Google Drive files.
 **3** | Got Linear Regression working using NumPy. | [2_numpy_linearRegression_with_CostFn.ipynb](2_numpy_linearRegression_with_CostFn.ipynb)
-
+**4** | Multivariate Linear Regression | [3_numpy_linearMultiVariateRegression.ipynb](3_numpy_linearMultiVariateRegression.ipynb)
 
 Queue | Notes 
 ----|-------
-&nbsp; | Multivariate Linear Regression 
 &nbsp; | Logistic Regression 
 
 Ideas | Notes
