@@ -7,32 +7,32 @@ Inspired by the mighty Siraj - https://github.com/llSourcell/100_Days_of_ML_Code
 
 I'll be using Google COLAB for this and publishing here on GitHub.
 
-**Day 1** - Linear Regression on a single variable using NumPy. [1_numpy_linearRegression.ipynb](1_numpy_linearRegression.ipynb)
+Day | Notes | Code
+----|-------|-----
+**1** | Linear Regression on a single variable using NumPy. | [1_numpy_linearRegression.ipynb](1_numpy_linearRegression.ipynb)
+**2** | (Re)learnt about Multiple Linear Regression and Multivariate Linear Regression. Started coding up the latter and getting CoLAB to cooperate with Google Drive files.
+**3** | Got Linear Regression working using NumPy. | [2_numpy_linearRegression_with_CostFn.ipynb](2_numpy_linearRegression_with_CostFn.ipynb)
 
-**Day 2** - (Re)learnt about Multiple Linear Regression and Multivariate Linear Regression. 
-            Started coding up the latter and getting CoLAB to cooperate with Google Drive files.           
-            
-**Day 3** - Got Linear Regression working using NumPy. [2_numpy_linearRegression_with_CostFn.ipynb](2_numpy_linearRegression_with_CostFn.ipynb)
 
-*[Queue]*
+Queue | Notes 
+----|-------
+&nbsp; | Multivariate Linear Regression 
+&nbsp; | Logistic Regression 
 
-**Day 4** - Multivariate Linear Regression 
-
-**Day 5** - Logistic Regression 
-
-* Forwardprop
-* Backprop
-* Simple sin wave matching Neural Network
-* Sin wave Neural Network - Internal manifold analysis & Vis!
-
-**=> PyTorch from here in...! <=**
-* Binary classification - sample
-* Multi-classification - sample
-* MNist - 
-* Prediction - 
-* AutoEncoders - 
-* Transfer Learning - 
-* Neural Style - 
+Ideas | Notes
+------|------
+&nbsp; | Forwardprop
+&nbsp; | Backprop
+&nbsp; | Simple sin wave matching Neural Network
+&nbsp; | Sin wave Neural Network - Internal manifold analysis & Vis!
+&nbsp; | ** PyTorch from here in...!**
+&nbsp; | Binary classification (sample)
+&nbsp; | Multi-classification (sample)
+&nbsp; | MNist 
+&nbsp; | Prediction 
+&nbsp; | AutoEncoders  
+&nbsp; | Transfer Learning  
+&nbsp; | Neural Style 
 
 
 
