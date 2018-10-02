@@ -14,7 +14,7 @@ Day | Notes | Code
 **3** | Got Linear Regression working using NumPy. | [2_numpy_linearRegression_with_CostFn.ipynb](2_numpy_linearRegression_with_CostFn.ipynb)
 **4** | Multivariate Linear Regression | [3_numpy_linearMultiVariateRegression.ipynb](3_numpy_linearMultiVariateRegression.ipynb)
 **5** | Logistic Regression, basics working | [4_numpy_logisticRegression.ipynb](4_numpy_logisticRegression.ipynb)
-**6** | Worked bringing the notebooks offline for tweaking; may contribute these back.  |
+**6** | Worked bringing the notebooks offline for tweaking; may contribute these back to: [https://ml-cheatsheet.readthedocs.io](ml-cheatsheet.readthedocs.io)  |
 
 Queue | Notes 
 ----|-------
