@@ -13,10 +13,11 @@ Day | Notes | Code
 **2** | (Re)learnt about Multiple Linear Regression and Multivariate Linear Regression. Started coding up the latter and getting CoLAB to cooperate with Google Drive files.
 **3** | Got Linear Regression working using NumPy. | [2_numpy_linearRegression_with_CostFn.ipynb](2_numpy_linearRegression_with_CostFn.ipynb)
 **4** | Multivariate Linear Regression | [3_numpy_linearMultiVariateRegression.ipynb](3_numpy_linearMultiVariateRegression.ipynb)
+**5** | Logistic Regression, basics working | [4_numpy_logisticRegression.ipynb]
 
 Queue | Notes 
 ----|-------
-&nbsp; | Logistic Regression 
+&nbsp; | Review notebooks to date and 'tweak' a bit as required to bring them up to solid standard.
 
 Ideas | Notes
 ------|------
