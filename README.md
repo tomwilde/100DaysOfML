@@ -5,7 +5,7 @@ Inspired by the mighty Siraj - https://github.com/llSourcell/100_Days_of_ML_Code
 
 ## So here we are!
 
-I'll be using Google COLAB for this and publishing here on GitHub.
+I'll be using Google COLAB/Local for this and publishing here on GitHub.
 
 Day | Notes | Code
 ----|-------|-----
@@ -15,6 +15,9 @@ Day | Notes | Code
 **4** | Multivariate Linear Regression | [3_numpy_linearMultiVariateRegression.ipynb](3_numpy_linearMultiVariateRegression.ipynb)
 **5** | Logistic Regression, basics working | [4_numpy_logisticRegression.ipynb](4_numpy_logisticRegression.ipynb)
 **6** | Worked bringing the notebooks offline for tweaking; may contribute these back to: [https://ml-cheatsheet.readthedocs.io](ml-cheatsheet.readthedocs.io)  |
+**7** | Got Multivariate working with a 3d graph; added the [100DaysOffline](100DaysOffline) folder. | See below...
+
+![Multivariate surface with prediction](https://raw.githubusercontent.com/tomwilde/100DaysOfMLCode/master/100DaysOffline/Regression/3.multivariateRegression.jpeg)
 
 Queue | Notes 
 ----|-------
