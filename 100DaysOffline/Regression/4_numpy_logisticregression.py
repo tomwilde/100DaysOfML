@@ -7,29 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/17JotMAy02r_7iFr9z4uVrjsVgOg6Tr2W
 """
 
-!pip install -U -q PyDrive
-
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas
 import io
-import math
-
-
-# Install the PyDrive wrapper & import libraries.
-# This only needs to be done once per notebook.
-!pip install -U -q PyDrive
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
-from google.colab import auth
-from oauth2client.client import GoogleCredentials
-
-# Authenticate and create the PyDrive client.
-# This only needs to be done once per notebook.
-auth.authenticate_user()
-gauth = GoogleAuth()
-gauth.credentials = GoogleCredentials.get_application_default()
-drive = GoogleDrive(gauth)
 
 # from: https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html
 #
@@ -39,24 +20,18 @@ drive = GoogleDrive(gauth)
 # A note of loss fns: we could use MSE here but actually we'll use Log-loss aka Cross-Entropy 
 #                     (these push the classification either way using a log fn to get more pronounced results - better than simple MSE)
 
-# Download a file based on its file ID.
-#
-# A file ID looks like: laggVyWshwcyP6kEI-y_W3P8D26sz
-file_id = '1ry5BexI6lQHi6mg1XBjU-FhIdTwuHgZX' # ./Datasets/data classification.csv (student pass/no pass)
-
-downloaded = drive.CreateFile({'id': file_id})
-#print('Downloaded content "{}"'.format(downloaded.GetContentString()))
-
-dataset = pandas.read_csv(io.StringIO(downloaded.GetContentString())).as_matrix()
+dataset = pandas.read_csv("data/data_classification.csv").as_matrix()
 print(dataset.shape)
 
+
 def sigmoid(z):
-  return 1 / (1 + np.exp(-1 * z))
+    return 1 / (1 + np.exp(-1 * z))
+
 
 def predict(features, weights):
-  
-  z = np.dot(features, weights)
-  return sigmoid(z) # tadaa
+    z = np.dot(features, weights)
+    return sigmoid(z)  # tadaa
+
 
 def cost_function(features, labels, weights):
     '''
@@ -72,19 +47,20 @@ def cost_function(features, labels, weights):
 
     predictions = predict(features, weights)
 
-    #Take the error when label=1
-    class1_cost = -labels*np.log(predictions)
+    # Take the error when label=1
+    class1_cost = -labels * np.log(predictions)
 
-    #Take the error when label=0
-    class2_cost = (1-labels)*np.log(1-predictions)
+    # Take the error when label=0
+    class2_cost = (1 - labels) * np.log(1 - predictions)
 
-    #Take the sum of both costs
+    # Take the sum of both costs
     cost = class1_cost - class2_cost
 
-    #Take the average cost
-    cost = cost.sum()/observations
+    # Take the average cost
+    cost = cost.sum() / observations
 
     return cost
+
 
 def update_weights(features, labels, weights, lr):
     '''
@@ -96,75 +72,134 @@ def update_weights(features, labels, weights, lr):
     '''
     N = len(features)
 
-    #1 - Get Predictions
+    # 1 - Get Predictions
     predictions = predict(features, weights)
 
-    #2 Transpose features from (200, 3) to (3, 200)
+    # 2 Transpose features from (200, 3) to (3, 200)
     # So we can multiply w the (200,1)  cost matrix.
     # Returns a (3,1) matrix holding 3 partial derivatives --
     # one for each feature -- representing the aggregate
     # slope of the cost function across all observations
-    gradient = np.dot(features.T,  predictions - labels)
+    gradient = np.dot(features.T, predictions - labels)
 
-    #3 Take the average cost derivative for each feature
+    # 3 Take the average cost derivative for each feature
     gradient /= N
 
-    #4 - Multiply the gradient by our learning rate
+    # 4 - Multiply the gradient by our learning rate
     gradient *= lr
 
-    #5 - Subtract from our weights to minimize cost
+    # 5 - Subtract from our weights to minimize cost
     weights -= gradient
 
     return weights
 
-def decision_boundary(prob):
-  return 1 if prob >= .5 else 0
 
-def classify(preds):
-  '''
-  input  - N element array of predictions between 0 and 1
-  output - N element array of 0s (False) and 1s (True)
-  '''
-  decision_boundary = np.vectorize(decision_boundary)
-  return decision_boundary(predictions).flatten()
+def decision_boundary(prob):
+    return 1 if prob >= .5 else 0
+
+
+def classify(predictions):
+    '''
+    input  - N element array of predictions between 0 and 1
+    output - N element array of 0s (False) and 1s (True)
+    '''
+    return np.vectorize(decision_boundary)(predictions).flatten()
+
 
 def accuracy(predicted_labels, actual_labels):
     diff = predicted_labels - actual_labels
     return 1.0 - (float(np.count_nonzero(diff)) / len(diff))
 
-def train(X, y, weights, alpha, iters):
-    cost_history = []
 
+def train(features, labels, weights, alpha, iters):
     for i in range(iters):
-        weights = update_weights(X, y, weights, alpha)
+        weights = update_weights(features, labels, weights, alpha)
 
         # Calculate cost for auditing purposes
-        cost = cost_function(X, y, weights)
+        cost = cost_function(features, labels, weights)
 
         # Log Progress
-        if i % 100 == 0:
-          print "iter: "+str(i) + " cost: "+str(cost)
+        if i % 1000 == 0:
+            print("iter: " + str(i) + " cost: " + str(cost))
     return weights
 
-# work it out
-# Studied / Slept / Pass|noPass
-X = dataset[:,[1,2]].reshape(100,3)
-y = dataset[:,3].reshape(100,1)
 
-weights = np.ones((3,1))
+# work it out
+totalFeatures = 100
+devSet = 80
+testSet = 20
+
+features = dataset[:, [0, 1]]
+labels = dataset[:, 2]
+
+# normalise the data
+bias = np.ones(shape=(totalFeatures, 1))
+XData = features / np.linalg.norm(features, ord=np.inf, axis=0, keepdims=True)
+yData = labels / np.linalg.norm(labels, ord=np.inf, axis=0, keepdims=True)
+XData = np.append(XData, bias, axis=1)
+
+# Studied / Slept / Pass|noPass
+XDev = XData[0:devSet, [0, 1, 2]]
+yDev = yData[0:devSet]
+XDev = XDev.reshape(devSet, 3)
+yDev = yDev.reshape(devSet, 1)
+
+XTest = XData[devSet:totalFeatures:, [0, 1, 2]]
+yTest = yData[devSet:totalFeatures]
+XTest = XTest.reshape(testSet, 3)
+yTest = yTest.reshape(testSet, 1)
+
+weights = np.ones((3, 1))
 c = 0
 
 alpha = 0.005
-iters = 1000
+iters = 10000
 
-# normalise the data
-bias = np.ones(shape=(100,1))
-y = y/np.linalg.norm(y, ord=np.inf, axis=0, keepdims=True)
-X = X/np.linalg.norm(X, ord=np.inf, axis=0, keepdims=True)
-X = np.append(bias, X, axis=1)
+print(XDev.shape)
+print(yDev.shape)
+weights = train(XDev, yDev, weights, alpha, iters)
 
-weights = train(X, y, weights, alpha, iters)
-print(weights)
 
-_ = plt.plot(X,y, 'o')
+devSetPoints = np.append(XDev[:, [0]], XDev[:, [1]], axis=1)
+devSetPoints = np.append(devSetPoints, yDev, axis=1)
 
+devPasses = devSetPoints[devSetPoints[:, 2] == 1.0]
+devFails = devSetPoints[devSetPoints[:, 2] == 0.0]
+
+predictions = predict(XTest, weights)
+
+acc = accuracy(predictions, yTest)
+print("Accuracy: " + str(acc))
+
+testSetPoints = np.append(XTest[:, [0]], XTest[:, [1]], axis=1)
+testSetPointsAct = np.append(testSetPoints, yTest, axis=1)
+testSetPointsPrd = np.append(testSetPoints, predictions, axis=1)
+
+testPassesAct = testSetPointsAct[testSetPointsAct[:, 2] == 1.0]
+testFailsAct = testSetPointsAct[testSetPointsAct[:, 2] == 0.0]
+
+testPassesPrd = testSetPointsPrd[testSetPointsPrd[:, 2] >= 0.5]
+testFailsPrd = testSetPointsPrd[testSetPointsPrd[:, 2] < 0.5]
+
+
+# purdey graph time
+
+plt.hold(True)
+
+fx = devFails[:, 0]  # shape: n,1
+fy = devFails[:, 1]
+
+# training / dev set
+_ = plt.plot(devPasses[:, 0], devPasses[:, 1], 'o', color='black')
+_ = plt.plot(devFails[:, 0], devFails[:, 1], 'x', color='black')
+
+# test set
+_ = plt.plot(testPassesPrd[:, 0], testPassesPrd[:, 1], 'o', color='red')
+_ = plt.plot(testFailsPrd[:, 0], testFailsPrd[:, 1], 'x', color='red')
+
+# _ = plt.plot(testPassesAct[:, 0], testPassesAct[:, 1], 'o', color='yellow')
+# _ = plt.plot(testFailsAct[:, 0], testFailsAct[:, 1], 'x', color='yellow')
+
+
+
+plt.show()

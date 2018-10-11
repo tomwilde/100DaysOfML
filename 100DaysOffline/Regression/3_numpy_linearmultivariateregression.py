@@ -18,7 +18,7 @@ from matplotlib import cm
 #
 # We need a cost fn and its derivative...
 
-dataset = pandas.read_csv("Advertising.csv").as_matrix()
+dataset = pandas.read_csv("data/Advertising.csv").as_matrix()
 
 
 def cost_function(features, targets, weights):
