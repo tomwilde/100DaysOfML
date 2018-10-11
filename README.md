@@ -16,8 +16,11 @@ Day | Notes | Code
 **5** | Logistic Regression, basics working | [4_numpy_logisticRegression.ipynb](4_numpy_logisticRegression.ipynb)
 **6** | Worked bringing the notebooks offline for tweaking; may contribute these back to: [https://ml-cheatsheet.readthedocs.io](ml-cheatsheet.readthedocs.io)  |
 **7** | Got Multivariate working with a 3d graph; added the [100DaysOffline](100DaysOffline) folder. | See below...
+**8** | I had to take a life break; back with finishing up Logistic Regression + graph | See below...
 
-![Multivariate surface with prediction](https://raw.githubusercontent.com/tomwilde/100DaysOfMLCode/master/100DaysOffline/Regression/3.multivariateRegression.jpeg)
+![Multivariate surface with prediction](https://raw.githubusercontent.com/tomwilde/100DaysOfMLCode/master/100DaysOffline/Regression/img/3.multivariateRegression.jpeg)
+
+![Logistic Regression](https://raw.githubusercontent.com/tomwilde/100DaysOfMLCode/master/100DaysOffline/Regression/img/4.logisticRegression.jpeg)
 
 Queue | Notes 
 ----|-------
