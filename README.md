@@ -18,8 +18,10 @@ Day | Notes | Code
 **7** | Got Multivariate working with a 3d graph; added the [100DaysOffline](100DaysOffline) folder. | See below...
 **8** | I had to take a life break; back with finishing up Logistic Regression + graph | See below...
 
+Multivariate surface with prediction
 ![Multivariate surface with prediction](https://raw.githubusercontent.com/tomwilde/100DaysOfMLCode/master/100DaysOffline/Regression/img/3.multivariateRegression.jpeg)
 
+Logistic Regression - pass/fail ; predictions in red circles
 ![Logistic Regression](https://raw.githubusercontent.com/tomwilde/100DaysOfMLCode/master/100DaysOffline/Regression/img/4.logisticRegression.jpeg)
 
 Queue | Notes 
